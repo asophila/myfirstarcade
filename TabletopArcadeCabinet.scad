@@ -11,7 +11,13 @@
 //
 //			Todas las medidas son en milímetros.
 //
+//
+//           Esta obra está licenciada bajo 
+//           la Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional. 
+//           Para ver una copia de esta licencia, visita http://creativecommons.org/licenses/by-nc-sa/4.0/.
+//
 /***************************************************************************/
+
 
 
 //////////////////////////
