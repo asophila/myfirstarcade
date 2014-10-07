@@ -27,6 +27,9 @@ GrosorMaterial = 5;            // Grosor del material (madera/acrílico). Requer
 RadioCurva = GrosorMaterial*2; // Define qué tan puntiagudas son las esquinas usando suma Minkowski
 
 DiametroOrificioJoystick = 30; // Diámetro necesario para que el Joystick se mueva en libertad
+DiametroOrificioBoton	= 25; // Diámetro Orificio Botón (Plunger Diámeter)
+DistanciaHEntreBotones    = 36; // Espacio horizontal entre el centro de 2 botones alineados
+DistanciaVEntreBotones    = 39; // Espacio vertical entre el centro de 2 botones alineados
 
 AnchoBaseHorizontal = 400;
 ProfundidadBaseHorizontal = 250;
@@ -40,12 +43,12 @@ module BaseHorizontalControles()
 	difference()
 	{
 		RawBaseHorizontal(); // Paso 1
-		translate([0,0])
-			circle(DiametroOrificioJoystick);	
+		OrificiosJoystickyBotones(); //Paso 2
 	};
 	
 };
 
+//Base horizontal sólida
 module RawBaseHorizontal()
 {
 	//Paso 1: Crear la base con bordes redondeados usando suma Minkowski
@@ -54,6 +57,26 @@ module RawBaseHorizontal()
 		square([AnchoBaseHorizontal,ProfundidadBaseHorizontal],center=true);
 		circle(RadioCurva);
 	}
+};
+
+module OrificiosJoystickyBotones()
+{
+		translate([-2*DiametroOrificioJoystick,0]) //corre a la izquierda el orificio Joystick
+			circle(DiametroOrificioJoystick/2);	
+		
+		for(Fila = [1,2])
+		{
+			//Columna 1
+			translate([DistanciaHEntreBotones,DistanciaVEntreBotones])
+				circle(DiametroOrificioBoton/2);
+		
+			//Columnas 2 y 3	
+			for(Columna = [2:3])
+			{
+				translate([Columna*DistanciaHEntreBotones,Fila*DistanciaVEntreBotones])
+					circle(DiametroOrificioBoton/2);
+			}
+		};
 };
 
 
