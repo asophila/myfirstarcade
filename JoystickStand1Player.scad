@@ -26,7 +26,7 @@
 GrosorMaterial = 5;            // Grosor del material (madera/acrílico). Requerido para uniones y joints
 RadioCurva = GrosorMaterial*2; // Define qué tan puntiagudas son las esquinas usando suma Minkowski
 
-DiametroOrificioJoystick = 30; // Diámetro necesario para que el Joystick se mueva en libertad
+DiametroOrificioJoystick = 20; // Diámetro necesario para que el Joystick se mueva en libertad
 DiametroOrificioBoton	= 25; // Diámetro Orificio Botón (Plunger Diámeter)
 DistanciaHEntreBotones    = 36; // Espacio horizontal entre el centro de 2 botones alineados
 DistanciaVEntreBotones    = 39; // Espacio vertical entre el centro de 2 botones alineados
@@ -61,17 +61,22 @@ module RawBaseHorizontal()
 
 module OrificiosJoystickyBotones()
 {
-		translate([-2*DiametroOrificioJoystick,0]) //corre a la izquierda el orificio Joystick
+
+		//Desde el centro, corremos a la izquierda el orificio del Joystick
+		translate([-63+5.5,0])
 			circle(DiametroOrificioJoystick/2);	
 		
-		for(Fila = [1,2])
+		//Creamos 2 filas horizontales de botones
+		for(Fila = [0,1])
 		{
 			//Columna 1
-			translate([DistanciaHEntreBotones,DistanciaVEntreBotones])
+			//Correr 5.5 mm hacia la derecha los botones, y 20mm hacia abajo
+			//Sólo para la primera columna
+			translate([5.5,Fila*DistanciaVEntreBotones-20])
 				circle(DiametroOrificioBoton/2);
 		
 			//Columnas 2 y 3	
-			for(Columna = [2:3])
+			for(Columna = [1:2])
 			{
 				translate([Columna*DistanciaHEntreBotones,Fila*DistanciaVEntreBotones])
 					circle(DiametroOrificioBoton/2);
