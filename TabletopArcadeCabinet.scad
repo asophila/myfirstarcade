@@ -43,4 +43,4 @@ module SegmentoLateral()
 
 };
 
-lateral();
+SegmentoLateral();

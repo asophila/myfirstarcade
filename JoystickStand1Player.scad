@@ -27,7 +27,7 @@ GrosorMaterial = 5;            // Grosor del material (madera/acrílico). Requer
 RadioCurva = GrosorMaterial*2; // Define qué tan puntiagudas son las esquinas usando suma Minkowski
 
 DiametroOrificioJoystick = 20; // Diámetro necesario para que el Joystick se mueva en libertad
-DiametroOrificioBoton	= 25; // Diámetro Orificio Botón (Plunger Diámeter)
+DiametroOrificioBoton	= 28; // Diámetro Orificio Botón (Plunger Diámeter)
 DistanciaHEntreBotones    = 36; // Espacio horizontal entre el centro de 2 botones alineados
 DistanciaVEntreBotones    = 39; // Espacio vertical entre el centro de 2 botones alineados
 
@@ -111,7 +111,31 @@ module OrificiosBotonesAccesorios()
 	}
 };
 
+
+////////////////////////////////////////////////////////////////////
+// Base inclinada
+////////////////////////////////////////////////////////////////////
+module BaseVerticalInclinada()
+{
+
+GrosorMaterial = 5;       // Grosor del material (madera/acrílico). Requerido para uniones y joints
+ProfundidadGabinete=500;  // 
+AltoGabinete=600;         //
+
+	polygon(points=[[0,0],
+					[ProfundidadGabinete,0],
+					[ProfundidadGabinete,AltoGabinete],
+					[100,AltoGabinete],
+					[100,AltoGabinete-100],
+					[200,AltoGabinete-100],
+					[100,70],
+					[0,10]], 
+	paths=[[0,1,2,3,4,5,6,7]]);
+};
+
+
 /******************************
 *******  TESTING **************
-*************************/
+******************************/
 BaseHorizontalControles();
+//BaseVerticalInclinada();
